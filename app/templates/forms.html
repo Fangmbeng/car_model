@@ -1,0 +1,20 @@
+{% block content %}
+<form method="POST", action="">
+    {{ form.csrf_token }}
+    <div class="form-group">
+        <fieldset id="brand-field">
+            {{ form.email.label }}
+            {{ form.email(class = 'form-control', placeholder = 'Please input email') }}
+        </fieldset>
+    </div>
+
+        <fieldset id="model-field">
+            {{ form.password.label }}
+            {{ form.password(class = "form-control", placeholder = "Please input password") }}
+        </fieldset>
+
+        <!-- Submit button area -->
+        {{ form.submit_button(class = "btn btn-primary btn-block mt-2")}}
+
+</form>
+{% endblock %}

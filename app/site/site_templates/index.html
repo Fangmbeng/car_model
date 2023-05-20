@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+{% if current_user.is_authenticated %}
+        <h1 class="text-center">Welcome Back, {{ current_user.username }}!</h1>
+    {% for post in posts %}
+        <div class="card my-3">
+            <div class="card-header">
+            {{ post.brand }}
+            </div>
+            <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>{{ post.model }}</p>
+                <footer class="blockquote-footer">{{ post.author.username }} on
+                    <cite title="Source Title">{{ post.date_created.strftime('%A, %B %d at %I:%M%p') }}</cite>
+                </footer>
+            </blockquote>
+            <a href="{{ url_for('api.get_post', post_id=post.id) }}" class="btn btn-primary mt-3">See More</a>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <h1 class="text-center">Hello World</h1>
+{% endif %}
+
+{% endblock %}

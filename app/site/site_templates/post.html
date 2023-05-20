@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ post.brand }} {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <div class="card my-3">
+            <!-- <img src="https://picsum.photos/2500/500" class="card-img-top" alt="placeholder image"> -->
+            <img src="{{ url_for('static', filename='flower.jpg') }}" class="card-img-top" alt="placeholder image">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.brand }}</h5>
+                <p class="card-text">{{ post.model }}</p>
+                <p class="card-text"><small class="text-muted">{{ post.author.username }}</small></p>
+                {% if current_user == post.author %}
+                    <a href="{{ url_for('api.edit_post', post_id=post.id) }}" class="btn btn-success">Edit Post</a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        Delete Post
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="deleteModalLabel">Delete {{ post.brand }}?</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                Are you sure you want to delete {{ post.brand }}? This action cannot be undone.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a href="{{ url_for('api.delete_post', post_id=post.id) }}" class="btn btn-danger">Delete Post</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
