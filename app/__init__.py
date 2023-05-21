@@ -6,10 +6,10 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 # Import the Config class from the config module - will have all of the app's configurations
 from config import Config
-from .api.routes import api
-from .authentication.routes import auth
-from .site.routes import site
-from .models import db as root_db, login, ma
+from app.api.routes import api
+from app.authentication.routes import auth
+from app.site.routes import site
+from app.models import db as root_db, login, ma
 # Create an instance of the Flask Class called app
 app = Flask(__name__)
 app.register_blueprint(site)
