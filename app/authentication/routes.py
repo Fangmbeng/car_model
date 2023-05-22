@@ -1,8 +1,8 @@
 from forms import LoginForm, SignUpForm
 from app.models import User, db
-from flask import Blueprint, render_template, request, redirect, url_for, flash
-from flask import render_template, redirect, url_for, flash, request
-from flask_login import login_user, logout_user, login_required, current_user
+from flask import Blueprint, render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash
+from flask_login import login_user, logout_user
 
 # imports for flask login 
 from flask_login import login_user, logout_user, LoginManager, current_user, login_required

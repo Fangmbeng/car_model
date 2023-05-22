@@ -1,9 +1,7 @@
 # Import the Flask Class from the flask module - will be main object
 from flask import Flask
 # Import SQLAlchemy and Migrate from their modules
-from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_login import LoginManager
 # Import the Config class from the config module - will have all of the app's configurations
 from config import Config
 from app.api.routes import api
@@ -17,7 +15,7 @@ app.register_blueprint(auth)
 app.register_blueprint(api)
 # Configure the app using the Config class
 app.config.from_object(Config)
-app.config['SECRET_KEY'] = "Anything"
+app.config['SECRET_KEY'] = " "
 
 # Create an instance of SQLAlchemy to represent our database
 root_db.init_app(app)
