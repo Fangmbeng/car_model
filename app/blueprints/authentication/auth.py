@@ -12,8 +12,8 @@ def verify(username, password):
         return user
     
 @token_auth.verify_token
-def verify_token(token):
+def verify(token):
     now = datetime.utcnow()
-    check_token = User.query.filter_by(token=token).first()
-    if check_token is None and check_token.token_expiration > now:
-        return check_token
+    user = User.query.filter_by(token=token).first()
+    if user is None and user.token_expiration > now:
+        return user

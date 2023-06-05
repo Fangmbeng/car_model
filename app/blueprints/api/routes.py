@@ -87,7 +87,7 @@ def index_():
     token = user.get_token()
     return {'token':token, 'token_expiration':user.token_expiration}
 
-@api.route('/posts')
+@api.route('/posts', methods=['GET'])
 @basic_auth.login_required
 def getposts():
     posts = Post.query.all()
@@ -104,10 +104,10 @@ def createpost():
     if not request.is_json:
         return("your request content-type is not JSON"), 400
     data=request.json
-    for field in ['brand', 'model']:
+    for field in ["brand", "model"]:
         if field not in data:
-            return("error:f{field} must be in request body"), 400
-    brand = data.get('brand')
+            return(f"error:{field} must be in request body"), 400
+    brand = data.get("brand")
     model = data.get("model")
     user = token_auth.current_user()
     new_post = Post(brand=brand, model=model, user_id=user.id)
