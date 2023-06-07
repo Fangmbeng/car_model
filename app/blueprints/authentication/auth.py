@@ -15,5 +15,5 @@ def verify(username, password):
 def verify(token):
     now = datetime.utcnow()
     user = User.query.filter_by(token=token).first()
-    if user is None and user.token_expiration > now:
+    if user is not None and user.token_expiration > now:
         return user
