@@ -90,7 +90,7 @@ def index_():
 @api.route('/posts', methods=['GET'])
 def getposts():
     posts = Post.query.all()
-    return [p.to_dict() for p in posts]
+    return jsonify([p.to_dict() for p in posts])
 
 @api.route('/post/<int:post_id>')
 def getpost(post_id):
