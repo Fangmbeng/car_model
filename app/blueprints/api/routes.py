@@ -108,8 +108,8 @@ def createpost():
             return(f"error:{field} must be in request body"), 400
     brand = data.get("brand")
     model = data.get("model")
-    user = token_auth.current_user()
-    new_post = Post(brand=brand, model=model, user_id=user.id)
+    #user = token_auth.current_user()
+    new_post = Post(brand=brand, model=model)
     return new_post.to_dict(), 201
     
 
