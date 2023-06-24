@@ -98,7 +98,7 @@ def getpost(post_id):
     return posts.to_dict()
 
 @api.route('/posts', methods=['POST'])
-@token_auth.login_required
+#@token_auth.login_required
 def createpost():
     if not request.is_json:
         return("your request content-type is not JSON"), 400
@@ -138,7 +138,7 @@ def createuser():
     return new_user.to_dict(), 201
     
 @api.route('/post/edit/<int:post_id>', methods=['POST'])
-@token_auth.login_required
+#@token_auth.login_required
 def editpost(post_id):
     post = Post.query.get(post_id)
     if not request.is_json:
@@ -155,7 +155,7 @@ def editpost(post_id):
 
 
 @api.route('/post/delete/<int:post_id>', methods=['POST'])
-@token_auth.login_required
+#@token_auth.login_required
 def deletepost(post_id):
     post = Post.query.get(post_id)
     if not request.is_json:
